@@ -32,7 +32,7 @@ import kotlinx.coroutines.launch
 
 class WordViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: WordRepository
+    private val repository: BookRepository
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
@@ -41,7 +41,7 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         val wordsDao = WordRoomDatabase.getDatabase(application, viewModelScope).wordDao()
-        repository = WordRepository(wordsDao)
+        repository = BookRepository(wordsDao)
         allWords = repository.allWords
     }
 

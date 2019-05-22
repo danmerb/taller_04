@@ -25,7 +25,7 @@ import com.example.android.Biblioteca.Room.Entity.Word
  * Abstracted Repository as promoted by the Architecture Guide.
  * https://developer.android.com/topic/libraries/architecture/guide.html
  */
-class WordRepository(private val wordDao: WordDao) {
+class BookRepository(private val wordDao: WordDao) {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.

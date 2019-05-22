@@ -7,4 +7,6 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "Tag")
-data class Tag(@PrimaryKey @ColumnInfo(name = "Tag") val word: String)
+data class Tag(@PrimaryKey @ColumnInfo(name = "id_tag") val id: Int,
+               @ColumnInfo(name = "Taf_name") val name: String ,
+               @ColumnInfo(name = "id_book") val id_book: Int)
