@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Editorial")
 data class Author(@PrimaryKey @ColumnInfo(name = "id_author") val id: Int,
-                  @ColumnInfo(name = "Author_name") val name: String ,
-                  @ColumnInfo(name = "id_book") val id_book: Int)
+                  @ColumnInfo(name = "Author_name") val name: String )
+
