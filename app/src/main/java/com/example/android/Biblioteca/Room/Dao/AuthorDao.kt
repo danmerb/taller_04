@@ -9,7 +9,7 @@ import com.example.android.Biblioteca.Room.Entity.Word
 
 
 @Dao
-interface AuthorXBookDao {
+interface AuthorDao {
 
     @Query("SELECT * from word_table ORDER BY word ASC")
     fun getAlphabetizedWords(): LiveData<List<Word>>
