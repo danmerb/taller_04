@@ -40,8 +40,13 @@ class BookRepository(private val bookDao: BookDao, private val authorDao: Author
     }
 
     @WorkerThread
-    fun getBooksByTag(tag: String): LiveData<List<Book>>{
-        return bookDao.getByTag(tag)
+    fun getBooksByTagEng(tag: String): LiveData<List<Book>>{
+        return bookDao.getByTagEng(tag)
+    }
+
+    @WorkerThread
+    fun getBooksByTagSpan(tag: String): LiveData<List<Book>>{
+        return bookDao.getByTagSpan(tag)
     }
 
     @WorkerThread

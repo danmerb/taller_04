@@ -24,9 +24,13 @@ interface BookDao {
     @Query("SELECT * FROM Book INNER JOIN Author ON author.id_author== Book.id_author WHERE Author.Author_name== :AuthorSearch ")
     fun getByAuthor(AuthorSearch: String): LiveData<List<Book>>
 
-    //buscar por tag
-    @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tags WHERE Tag.tag_name== :TagSearch ")
-    fun getByTag(TagSearch: String): LiveData<List<Book>>
+    //buscar por tag Spanish
+    @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tags WHERE Tag.tag_nameSpan== :TagSearch ")
+    fun getByTagSpan(TagSearch: String): LiveData<List<Book>>
+
+    //buscar por tag English
+    @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tags WHERE Tag.tag_nameEng== :TagSearch ")
+    fun getByTagEng(TagSearch: String): LiveData<List<Book>>
 
     //buscar por titulo en espanol
     @Query("SELECT * FROM Book  WHERE Book.book_titleSpanish= :TitleSearch ")
