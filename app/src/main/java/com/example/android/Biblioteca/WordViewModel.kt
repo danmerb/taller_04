@@ -21,7 +21,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android.Biblioteca.Room.Entity.Word
-import com.example.android.Biblioteca.Room.WordRoomDatabase
+import com.example.android.Biblioteca.Room.BookRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -40,9 +40,9 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     val allWords: LiveData<List<Word>>
 
     init {
-        val wordsDao = WordRoomDatabase.getDatabase(application, viewModelScope).wordDao()
-        repository = BookRepository(wordsDao)
-        allWords = repository.allWords
+        //val wordsDao = BookRoomDatabase.getDatabase(application, viewModelScope).wordDao()
+       // repository = BookRepository(wordsDao)
+        //allWords = repository.allWords
     }
 
     /**

@@ -5,7 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
+import com.example.android.Biblioteca.Room.Dao.BookDao
 import com.example.android.Biblioteca.Room.Dao.WordDao
+import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.Room.Entity.Word
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,31 +17,29 @@ import kotlinx.coroutines.launch
  * This is the backend. The database. This used to be done by the OpenHelper.
  * The fact that this has very few comments emphasizes its coolness.
  */
-@Database(entities = [Word::class], version = 1)
-abstract class WordRoomDatabase : RoomDatabase() {
+@Database(entities = [Book::class], version = 1)
+abstract class BookRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun bookDao(): BookDao
 
     companion object {
         @Volatile
-        private var INSTANCE: WordRoomDatabase? = null
+        private var INSTANCE: BookRoomDatabase? = null
 
         fun getDatabase(
                 context: Context,
                 scope: CoroutineScope
-        ): WordRoomDatabase {
+        ): BookRoomDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                         context.applicationContext,
-                        WordRoomDatabase::class.java,
-                        "word_database"
+                        BookRoomDatabase::class.java,
+                        "book_database"
                 )
-                        // Wipes and rebuilds instead of migrating if no Migration object.
-                        // Migration is not part of this codelab.
                         .fallbackToDestructiveMigration()
-                        .addCallback(WordDatabaseCallback(scope))
+                        .addCallback(Companion.BookDatabaseCallback(scope))
                         .build()
                 INSTANCE = instance
                 // return instance
@@ -47,7 +47,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
             }
         }
 
-        private class WordDatabaseCallback(
+        private class BookDatabaseCallback(
                 private val scope: CoroutineScope
         ) : RoomDatabase.Callback() {
             /**
@@ -60,7 +60,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.wordDao())
+                        populateDatabase(database.bookDao())
                     }
                 }
             }
@@ -70,15 +70,15 @@ abstract class WordRoomDatabase : RoomDatabase() {
          * Populate the database in a new coroutine.
          * If you want to start with more words, just add them.
          */
-        suspend fun populateDatabase(wordDao: WordDao) {
+        suspend fun populateDatabase(bookDao: BookDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            wordDao.deleteAll()
+            bookDao.deleteAll()
 
-            var word = Word("Hello")
-            wordDao.insert(word)
-            word = Word("World!")
-            wordDao.insert(word)
+            //var book = Word("Hello")
+           // wordDao.insert(word)
+            //word = Word("World!")
+            //wordDao.insert(word)
         }
     }
 

@@ -22,7 +22,7 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import com.example.android.Biblioteca.Room.Dao.WordDao
 import com.example.android.Biblioteca.Room.Entity.Word
-import com.example.android.Biblioteca.Room.WordRoomDatabase
+import com.example.android.Biblioteca.Room.BookRoomDatabase
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.runBlocking
@@ -47,14 +47,14 @@ class WordDaoTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var wordDao: WordDao
-    private lateinit var db: WordRoomDatabase
+    private lateinit var db: BookRoomDatabase
 
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getTargetContext()
         // Using an in-memory database because the information stored here disappears when the
         // process is killed.
-        db = Room.inMemoryDatabaseBuilder(context, WordRoomDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, BookRoomDatabase::class.java)
                 // Allowing main thread queries, just for testing.
                 .allowMainThreadQueries()
                 .build()
