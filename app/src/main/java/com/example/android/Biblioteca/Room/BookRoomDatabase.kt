@@ -5,8 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
-import com.example.android.Biblioteca.Room.Dao.BookDao
-import com.example.android.Biblioteca.Room.Dao.WordDao
+import com.example.android.Biblioteca.Room.Dao.*
 import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.Room.Entity.Word
 import kotlinx.coroutines.CoroutineScope
@@ -21,6 +20,9 @@ import kotlinx.coroutines.launch
 abstract class BookRoomDatabase : RoomDatabase() {
 
     abstract fun bookDao(): BookDao
+    abstract fun AuthorDao(): AuthorDao
+    abstract fun TagDao(): TagDao
+    abstract fun EditorialDao(): EditorialDao
 
     companion object {
         @Volatile
@@ -60,7 +62,7 @@ abstract class BookRoomDatabase : RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.bookDao())
+                        populateDatabase(database.bookDao(),database.AuthorDao(),database.TagDao(),database.EditorialDao())
                     }
                 }
             }
@@ -70,10 +72,13 @@ abstract class BookRoomDatabase : RoomDatabase() {
          * Populate the database in a new coroutine.
          * If you want to start with more words, just add them.
          */
-        suspend fun populateDatabase(bookDao: BookDao) {
+        suspend fun populateDatabase(bookDao: BookDao,authorDao: AuthorDao,tagDao: TagDao,editorialDao: EditorialDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
             bookDao.deleteAll()
+            authorDao.deleteAll()
+            tagDao.deleteAll()
+            editorialDao.deleteAll()
 
             //var book = Word("Hello")
            // wordDao.insert(word)

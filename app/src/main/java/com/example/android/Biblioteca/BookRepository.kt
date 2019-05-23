@@ -5,27 +5,27 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import com.example.android.Biblioteca.Room.Dao.AuthorDao
 import com.example.android.Biblioteca.Room.Dao.BookDao
+import com.example.android.Biblioteca.Room.Dao.EditorialDao
 import com.example.android.Biblioteca.Room.Dao.TagDao
-import com.example.android.Biblioteca.Room.Entity.Author
-import com.example.android.Biblioteca.Room.Entity.Book
-import com.example.android.Biblioteca.Room.Entity.Tag
-import com.example.android.Biblioteca.Room.Entity.Word
+import com.example.android.Biblioteca.Room.Entity.*
 
-class BookRepository(private val bookDao: BookDao, private val authorDao: AuthorDao, private val tagDao: TagDao ) {
+class BookRepository(private val bookDao: BookDao, private val authorDao: AuthorDao, private val tagDao: TagDao, private val editorialDao:EditorialDao ) {
 
     val allBooksspan: LiveData<List<Book>> = bookDao.getAlphaBooksSpan()
     val allBooksEng: LiveData<List<Book>> = bookDao.getAlphaBooksEng()
     val allFavo: LiveData<List<Book>> = bookDao.getFavorites(true)
     val allAuthor:LiveData<List<Author>> = authorDao.getAlphaAuthor()
     val allTags:LiveData<List<Tag>> = tagDao.getAllTags()
+    val allEditorial:LiveData<List<Editorial>> = editorialDao.getAllEditorial()
 
 
 
     @WorkerThread
-    suspend fun insert(book: Book,author:Author,tag:Tag) {
+    suspend fun insert(book: Book,author:Author,tag:Tag , editorial:Editorial) {
         bookDao.insert(book)
         authorDao.insert(author)
         tagDao.insert(tag)
+        editorialDao.insert(editorial)
     }
 
     @WorkerThread
@@ -40,8 +40,28 @@ class BookRepository(private val bookDao: BookDao, private val authorDao: Author
     }
 
     @WorkerThread
-    fun getBooksByTag(tag: String): LiveData<List<Book>>{
-        return bookDao.getByTag(tag)
+    fun getBooksByTagEng(tag: String): LiveData<List<Book>>{
+        return bookDao.getByTagEng(tag)
+    }
+
+    @WorkerThread
+    fun getBooksByTagSpan(tag: String): LiveData<List<Book>>{
+        return bookDao.getByTagSpan(tag)
+    }
+
+    @WorkerThread
+    fun getBooksByTitleEsp(title: String): LiveData<List<Book>>{
+        return bookDao.getByTitleEsp(title)
+    }
+
+    @WorkerThread
+    fun getBooksByTitleEng(title: String): LiveData<List<Book>>{
+        return bookDao.getByTitleEng(title)
+    }
+
+    @WorkerThread
+    fun getBooksByEditorial(title: String): LiveData<List<Book>>{
+        return bookDao.getByEditorial(title)
     }
 
 
