@@ -1,4 +1,4 @@
-package com.example.android.Biblioteca
+package com.example.android.Biblioteca.Activity
 
 /*
  * Copyright (C) 2017 Google Inc.
@@ -23,18 +23,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import com.example.android.Biblioteca.R
 
 /**
  * Activity for entering a word.
  */
 
-class NewWordActivity : AppCompatActivity() {
+class NewBookActivity : AppCompatActivity() {
 
     private lateinit var editWordView: EditText
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_word)
+        setContentView(R.layout.activity_new_book)
         editWordView = findViewById(R.id.edit_word)
 
         val button = findViewById<Button>(R.id.button_save)

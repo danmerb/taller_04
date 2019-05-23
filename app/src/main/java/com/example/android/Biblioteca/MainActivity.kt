@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar
 import android.widget.Toast
+import com.example.android.Biblioteca.Activity.NewBookActivity
 import com.example.android.Biblioteca.Room.Entity.Word
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
+            val intent = Intent(this@MainActivity, NewBookActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
         }
     }
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.let { data ->
-                val word = Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY))
+                val word = Word(data.getStringExtra(NewBookActivity.EXTRA_REPLY))
                 wordViewModel.insert(word)
             }
         } else {
