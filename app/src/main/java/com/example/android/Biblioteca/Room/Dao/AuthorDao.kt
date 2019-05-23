@@ -5,18 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.android.Biblioteca.Room.Entity.Author
+import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.Room.Entity.Word
 
 
 @Dao
 interface AuthorDao {
 
-    @Query("SELECT * from word_table ORDER BY word ASC")
-    fun getAlphabetizedWords(): LiveData<List<Word>>
+    @Query("SELECT * from Author ORDER BY Author_name ASC")
+    fun getAlphaAuthor(): LiveData<List<Author>>
 
     @Insert
-    suspend fun insert(word: Word)
+    suspend fun insert(author: Author)
 
-    @Query("DELETE FROM word_table")
+    @Query("DELETE FROM Author")
     fun deleteAll()
 }
