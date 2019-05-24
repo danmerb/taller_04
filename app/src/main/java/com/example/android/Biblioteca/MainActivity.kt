@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+/**
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -66,6 +67,11 @@ class MainActivity : AppCompatActivity() {
                     R.string.empty_not_saved,
                     Toast.LENGTH_LONG
             ).show()
+
+ */
         }
-    }
+
+
+
+
 }

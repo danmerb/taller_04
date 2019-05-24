@@ -12,7 +12,7 @@ import com.example.android.Biblioteca.Room.Entity.Word
 @Dao
 interface TagDao {
 
-    @Query("SELECT * from Tag ORDER BY tag_name ASC")
+    @Query("SELECT * from Tag ORDER BY Tag.tag_nameSpan ASC")
     fun getAllTags(): LiveData<List<Tag>>
 
     @Insert

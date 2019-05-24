@@ -6,8 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 import com.example.android.Biblioteca.Room.Dao.*
-import com.example.android.Biblioteca.Room.Entity.Book
-import com.example.android.Biblioteca.Room.Entity.Word
+import com.example.android.Biblioteca.Room.Entity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +15,7 @@ import kotlinx.coroutines.launch
  * This is the backend. The database. This used to be done by the OpenHelper.
  * The fact that this has very few comments emphasizes its coolness.
  */
-@Database(entities = [Book::class], version = 1)
+@Database(entities = [Book::class,Author::class,Editorial::class,Tag::class], version = 1)
 abstract class BookRoomDatabase : RoomDatabase() {
 
     abstract fun bookDao(): BookDao
