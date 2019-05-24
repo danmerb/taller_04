@@ -29,10 +29,13 @@ limitations under the License. -->
     tools:showIn="@layout/activity_main">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/rv_book_list"
+        android:layout_height="wrap_content"
         android:background="@android:color/darker_gray"
-        tools:listitem="@layout/recyclerview_item"/>
+        tools:listitem="@layout/recyclerview_item"
+
+        tools:ignore="MissingConstraints"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,22 +2,22 @@ package com.example.android.Biblioteca
 
 
 
-import android.app.Activity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.widget.Toolbar
-import android.widget.Toast
-import com.example.android.Biblioteca.Activity.NewBookActivity
-import com.example.android.Biblioteca.Room.Entity.Word
+import com.example.android.Biblioteca.Adapter.BookAdapter
+
 import com.example.android.Biblioteca.ViewModel.BookViewModel
+import com.example.android.Biblioteca.models.Book
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var libros: MutableList<Book>
 
     private val newBookActivityRequestCode = 1
     private lateinit var bookViewModel: BookViewModel
@@ -25,6 +25,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        libros = MutableList(10) { i ->
+            Log.d("prueba", i.toString())
+
+
+            Book(1, "titulo", 1, "editorial", 1, "resumen")
+
+        }
+        initRecycler()
 
 /**
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -70,6 +79,18 @@ class MainActivity : AppCompatActivity() {
 
  */
         }
+
+    fun initRecycler() {
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = BookAdapter(libros)
+
+        rv_book_list.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+
+    }
 
 
 
