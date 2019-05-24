@@ -27,6 +27,10 @@ class BookAdapter internal constructor(context: Context) :  RecyclerView.Adapter
     override fun onBindViewHolder(holder: BookAdapter.BookViewHolder, position: Int) {
         holder.bind(books[position])
     }
+    internal fun setBooks(words: List<Book>) {
+        this.books = words
+        notifyDataSetChanged()
+    }
 
     class BookViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         fun bind(book: Book){

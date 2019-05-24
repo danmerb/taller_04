@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
             viewModel.insertBook(Book(1,"Hello","Hola","img1",2,1,1,2,false,"Bored","Aburrido"), Author(1,"Nexxtor"), Tag(1,"romance","love"), Editorial(2,"qwe"))
         }
 
+        viewModel.getAll().observe(this, Observer { books ->
+            books?.let { adapter.setBooks(it) }
+        })
 
         viewModel.getAll().observe(this, Observer { books ->
             for (books in books) {
