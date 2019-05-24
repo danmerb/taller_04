@@ -6,7 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.android.Biblioteca.BookRepository
 import com.example.android.Biblioteca.Room.BookRoomDatabase
+import com.example.android.Biblioteca.Room.Entity.Author
 import com.example.android.Biblioteca.Room.Entity.Book
+import com.example.android.Biblioteca.Room.Entity.Editorial
+import com.example.android.Biblioteca.Room.Entity.Tag
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,9 +27,10 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
         allBooksEng = repository.allBooksEng
     }
 
-    /*fun insertBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(book)
-    }*/
+    fun insertBook(book: Book, author:Author, tag: Tag, editorial: Editorial) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(book,author,tag,editorial)
+    }
 
+    fun getAll():LiveData<List<Book>> = repository.getAll()
 
 }

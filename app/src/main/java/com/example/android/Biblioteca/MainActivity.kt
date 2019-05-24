@@ -5,13 +5,19 @@ package com.example.android.Biblioteca
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.Biblioteca.Adapter.BookAdapter
+import com.example.android.Biblioteca.Room.Entity.Author
+import com.example.android.Biblioteca.Room.Entity.Book
+import com.example.android.Biblioteca.Room.Entity.Editorial
+import com.example.android.Biblioteca.Room.Entity.Tag
 
 import com.example.android.Biblioteca.ViewModel.BookViewModel
-import com.example.android.Biblioteca.models.Book
-import kotlinx.android.synthetic.main.content_main.*
+
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,13 +32,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val recyclerView = findViewById<RecyclerView>(R.id.rv_book_list)
-        val adapter = BookAdapter()
+        val adapter = BookAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
+        val viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        fab.setOnClickListener {
+            viewModel.insertBook(Book(1,"Hello","Hola","img1",2,1,1,2,false,"Bored","Aburrido"), Author(1,"Nexxtor"), Tag(1,"romance","love"), Editorial(2,"qwe"))
+        }
 
+
+        viewModel.getAll().observe(this, Observer { books ->
+            for (books in books) {
+                Log.d("Lista de libros", books.titleEnglish + books.titleSpanish + books.editorial)
+            }
+        })
         //initRecycler()
 
 /**

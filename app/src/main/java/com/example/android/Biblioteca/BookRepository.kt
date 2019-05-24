@@ -28,6 +28,8 @@ class BookRepository(private val bookDao: BookDao, private val authorDao: Author
         editorialDao.insert(editorial)
     }
 
+    fun getAll():LiveData<List<Book>> = bookDao.getAll()
+
     @WorkerThread
     fun marcarODesmarcarFav(book: Book) {
         var flag= !book.estado

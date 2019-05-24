@@ -53,6 +53,9 @@ interface BookDao {
     fun UpdateFavorites(isbn: Int,estado:Boolean)
 
 
+    @Query("SELECT * FROM Book")
+    fun getAll():LiveData<List<Book>>
+
     @Insert
     suspend fun insert(book:Book)
 

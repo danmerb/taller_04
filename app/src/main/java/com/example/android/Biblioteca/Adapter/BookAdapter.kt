@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.Biblioteca.R
+import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.Room.Entity.Word
-import com.example.android.Biblioteca.models.Book
+//import com.example.android.Biblioteca.models.Book
 import kotlinx.android.synthetic.main.list_element_book.view.*
 import java.util.zip.Inflater
 
-class BookAdapter internal constructor() :  RecyclerView.Adapter<BookAdapter.BookViewHolder>
+class BookAdapter internal constructor(context: Context) :  RecyclerView.Adapter<BookAdapter.BookViewHolder>
 () {
 
     private var books = emptyList<Book>() // Cached copy of words
@@ -30,14 +31,14 @@ class BookAdapter internal constructor() :  RecyclerView.Adapter<BookAdapter.Boo
     class BookViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         fun bind(book: Book){
             with(itemView){
-                titulo.text = book.titulo
+               // titulo.text = book.titulo
                 /*tvEdicion =  findViewById(R.id.edicion)
                 tvEdicion.text = libro.edicion.toString()
                 tvEditorial =  findViewById(R.id.editorial)
                 tvEditorial.text = libro.editorial
                 tvISBN =  findViewById(R.id.isbn)
                 tvISBN.text = libro.isbn.toString()*/
-                resumen.text = book.resumen
+                //resumen.text = book.resumen
             }
         }
     }
