@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.Biblioteca.BookRepository
 import com.example.android.Biblioteca.Room.BookRoomDatabase
 import com.example.android.Biblioteca.Room.Entity.Book
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BookViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -21,6 +23,10 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
         repository = BookRepository(BookDao,AuthorDao,TagDao,EditorialDao)
         allBooksEng = repository.allBooksEng
     }
+
+    /*fun insertBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(book)
+    }*/
 
 
 }

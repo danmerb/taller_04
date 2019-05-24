@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        libros = MutableList(10) { i ->
-            Log.d("prueba", i.toString())
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_book_list)
+        val adapter = BookAdapter()
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
 
-            Book(1, "titulo", 1, "editorial", 1, "resumen")
 
-        }
-        initRecycler()
+        //initRecycler()
 
 /**
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
  */
         }
 
-    fun initRecycler() {
+    /*fun initRecycler() {
         viewManager = LinearLayoutManager(this)
         viewAdapter = BookAdapter(libros)
 
@@ -90,7 +90,9 @@ class MainActivity : AppCompatActivity() {
             adapter = viewAdapter
         }
 
-    }
+    }*/
+
+
 
 
 
