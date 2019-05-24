@@ -38,19 +38,19 @@ class BookAdapter (val items: MutableList<Book>): RecyclerView.Adapter<BookAdapt
             Log.d("CUSTOM",libro.titulo)
             tvTitulo =  findViewById(R.id.titulo)
             tvTitulo.text = libro.titulo
-            tvEdicion =  findViewById(R.id.edicion)
+            /*tvEdicion =  findViewById(R.id.edicion)
             tvEdicion.text = libro.edicion.toString()
             tvEditorial =  findViewById(R.id.editorial)
             tvEditorial.text = libro.editorial
             tvISBN =  findViewById(R.id.isbn)
-            tvISBN.text = libro.isbn.toString()
+            tvISBN.text = libro.isbn.toString()*/
             tvResumen =  findViewById(R.id.resumen)
             tvResumen.text = libro.resumen
 
             this.setOnClickListener {
                 var mIntent = Intent(it.context,  SecondActivity:: class.java)
-                mIntent.putExtra("key_nombre", libro.resumen)
-                mIntent.putExtra("key_ambito", libro.titulo)
+                mIntent.putExtra("key_resumen", libro.resumen)
+                mIntent.putExtra("key_titulo", libro.titulo)
                 this.context.startActivity(mIntent)
             }
         }

@@ -3,16 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+
     tools:context="com.example.android.Biblioteca.fragments.detalles">
 
+
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/tv_fragment_titulo"/>
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Aquí iría la imagen"/>
 
-        android:id="@+id/tv_fragment_name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autores"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_autores"/>
 
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
 
-        android:id="@+id/tv_fragment_id"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edicion"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_edicion"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="editorial"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_editorial"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="isbn"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_isbn"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_resumen"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TAGS"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_fragment_tag"/>
+
+
+
+
 
 </LinearLayout>
