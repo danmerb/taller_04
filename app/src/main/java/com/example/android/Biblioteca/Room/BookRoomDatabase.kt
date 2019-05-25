@@ -61,7 +61,7 @@ abstract class BookRoomDatabase : RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.bookDao(),database.AuthorDao(),database.TagDao(),database.EditorialDao())
+                       // populateDatabase(database.bookDao(),database.AuthorDao(),database.TagDao(),database.EditorialDao())
                     }
                 }
             }
@@ -74,7 +74,7 @@ abstract class BookRoomDatabase : RoomDatabase() {
         suspend fun populateDatabase(bookDao: BookDao,authorDao: AuthorDao,tagDao: TagDao,editorialDao: EditorialDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            bookDao.deleteAll()
+            //bookDao.deleteAll()
             authorDao.deleteAll()
             tagDao.deleteAll()
             editorialDao.deleteAll()

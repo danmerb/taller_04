@@ -45,7 +45,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    fun getAllBook():LiveData<List<Book>> = repository.getAll()
+    fun getAll():LiveData<List<Book>> = repository.getAll()
 
     fun getAllTag():LiveData<List<Tag>> = repository.getAllTag()
     fun getAllEditorial():LiveData<List<Editorial>> = repository.getAllEditorial()

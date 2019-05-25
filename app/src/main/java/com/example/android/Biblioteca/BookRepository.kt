@@ -14,7 +14,7 @@ class BookRepository(private val bookDao: BookDao, private val authorDao: Author
     val allBooksspan: LiveData<List<Book>> = bookDao.getAlphaBooksSpan()
     val allBooksEng: LiveData<List<Book>> = bookDao.getAlphaBooksEng()
     val allFavo: LiveData<List<Book>> = bookDao.getFavorites(true)
-   // val allAuthor:LiveData<List<Author>> = authorDao.getAlphaAuthor()
+  //  val allAuthor:LiveData<List<Author>> = authorDao.getAlphaAuthor()
     val allTags:LiveData<List<Tag>> = tagDao.getAllTags()
 //    val allEditorial:LiveData<List<Editorial>> = editorialDao.getAllEditorial()
 
