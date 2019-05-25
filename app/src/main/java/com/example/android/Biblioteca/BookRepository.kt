@@ -14,21 +14,38 @@ class BookRepository(private val bookDao: BookDao, private val authorDao: Author
     val allBooksspan: LiveData<List<Book>> = bookDao.getAlphaBooksSpan()
     val allBooksEng: LiveData<List<Book>> = bookDao.getAlphaBooksEng()
     val allFavo: LiveData<List<Book>> = bookDao.getFavorites(true)
-    val allAuthor:LiveData<List<Author>> = authorDao.getAlphaAuthor()
+  //  val allAuthor:LiveData<List<Author>> = authorDao.getAlphaAuthor()
     val allTags:LiveData<List<Tag>> = tagDao.getAllTags()
-    val allEditorial:LiveData<List<Editorial>> = editorialDao.getAllEditorial()
+//    val allEditorial:LiveData<List<Editorial>> = editorialDao.getAllEditorial()
 
 
 
     @WorkerThread
-    suspend fun insert(book: Book,author:Author,tag:Tag , editorial:Editorial) {
+    suspend fun insertBook(book: Book) {
         bookDao.insert(book)
+    }
+
+    @WorkerThread
+    suspend fun insertAuthor(author:Author) {
         authorDao.insert(author)
+    }
+
+    @WorkerThread
+    suspend fun insertTag(tag:Tag) {
         tagDao.insert(tag)
+    }
+
+    @WorkerThread
+    suspend fun insertEditorial(editorial:Editorial) {
         editorialDao.insert(editorial)
     }
 
+
+
     fun getAll():LiveData<List<Book>> = bookDao.getAll()
+    fun getAllTag():LiveData<List<Tag>> = tagDao.getAllTags()
+    fun getAllEditorial():LiveData<List<Editorial>> = editorialDao.getAllEditorial()
+    fun getAllAuthor():LiveData<List<Author>> = authorDao.getAlphaAuthor()
 
     @WorkerThread
     fun marcarODesmarcarFav(book: Book) {

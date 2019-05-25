@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.Biblioteca.R
 import com.example.android.Biblioteca.Room.Entity.Book
-import com.example.android.Biblioteca.Room.Entity.Word
+
 //import com.example.android.Biblioteca.models.Book
 import kotlinx.android.synthetic.main.list_element_book.view.*
 import java.util.zip.Inflater

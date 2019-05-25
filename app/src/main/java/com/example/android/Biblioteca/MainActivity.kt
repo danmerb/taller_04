@@ -14,12 +14,12 @@ import com.example.android.Biblioteca.Room.Entity.Author
 import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.Room.Entity.Editorial
 import com.example.android.Biblioteca.Room.Entity.Tag
-
 import com.example.android.Biblioteca.ViewModel.BookViewModel
-
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
+
 
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -38,18 +38,77 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
+       fillDB()
         val viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
         fab.setOnClickListener {
-            viewModel.insertBook(Book(1,"Hello","Hola","img1",2,1,1,2,false,"Bored","Aburrido"), Author(1,"Nexxtor"), Tag(1,"romance","love"), Editorial(2,"qwe"))
+           // viewModel.insertBook(Book(1451648537, "Steve Jobs", "Steve Jobs", "img1", 1, 1, 1, 2, false, "sdd", "ffdf"),
+             //       Author(1, "Nexxtor"), Tag(1, "romance", "love"),
+               //     Editorial(2, "qwe"))
         }
 
 
-        viewModel.getAll().observe(this, Observer { books ->
-            for (books in books) {
-                Log.d("Lista de libros", books.titleEnglish + books.titleSpanish + books.editorial)
+
+        //TODO() TEST
+        viewModel.getAllAuthor().observe(this, Observer { author ->
+            for (author in author) {
+                Log.d("Lista de autores", author.id.toString() + author.name)
             }
         })
+
+        viewModel.getAllEditorial().observe(this, Observer { editorial ->
+            for (editorial in editorial) {
+                Log.d("Lista de editorial", editorial.id.toString() + editorial.name)
+            }
+        })
+        viewModel.getAllTag().observe(this, Observer { tag ->
+            for (tag in tag) {
+                Log.d("Lista de tag", tag.id.toString() + tag.nameEnglish + tag.nameSpanish)
+            }
+        })
+
+
+
+
+
+    }
+
+    fun fillDB() {
+        val viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        //Insertando Autores
+        viewModel.insertAuthor(Author(1,"Walter Isaacson "))
+        viewModel.insertAuthor( Author(2,"Neil Druckmann"))
+
+        //Insertando Editorial
+        viewModel.insertEditorial(Editorial(1,"Simon & Schuster"))
+        viewModel.insertEditorial(Editorial(2,"Dark Horse"))
+
+        //Insertando Tag
+        viewModel.insertTag(Tag(1,"Historia","Story"))
+        viewModel.insertTag(Tag(2,"Aventura","Adventure"))
+
+
+
+       /* viewModel.insertBook(Book(1451648537, "Steve Jobs", "Steve Jobs", "steve_jobs.jpg", 1,
+                1, 1, 2, false, "f", "r"),
+                Author(1, "Nexxtor"), Tag(1, "romance", "love"),
+                Editorial(2, "qwe"))*/
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //initRecycler()
 
 /**
@@ -95,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             ).show()
 
  */
-        }
+
 
     /*fun initRecycler() {
         viewManager = LinearLayoutManager(this)
