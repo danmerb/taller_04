@@ -61,7 +61,7 @@ abstract class BookRoomDatabase : RoomDatabase() {
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                       // populateDatabase(database.bookDao(),database.AuthorDao(),database.TagDao(),database.EditorialDao())
+                        populateDatabase(database.bookDao(),database.AuthorDao(),database.TagDao(),database.EditorialDao())
                     }
                 }
             }
@@ -74,10 +74,32 @@ abstract class BookRoomDatabase : RoomDatabase() {
         suspend fun populateDatabase(bookDao: BookDao,authorDao: AuthorDao,tagDao: TagDao,editorialDao: EditorialDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            //bookDao.deleteAll()
+            bookDao.deleteAll()
             authorDao.deleteAll()
             tagDao.deleteAll()
             editorialDao.deleteAll()
+
+/*
+            //Insertando Autores
+            authorDao.insert(Author(1,"Walter Isaacson "))
+            authorDao.insert( Author(2,"Neil Druckmann"))
+
+            //Insertando Editorial
+            editorialDao.insert(Editorial(1,"Simon & Schuster"))
+            editorialDao.insert(Editorial(2,"Dark Horse"))
+
+            //Insertando Tag
+            tagDao.insert(Tag(1,"Historia","Story"))
+            tagDao.insert(Tag(2,"Aventura","Adventure"))
+
+            //Insertando book
+            bookDao.insert(Book(1451648537, "Steve Jobs", "Steve Jobs", "steve_jobs.jpg", 1,
+                    1, 1, 1, false, "Based on more than forty interviews with Jobs conducted over two years—as well as interviews with more than a hundred family members, friends, adversaries, competitors, and colleagues—Walter Isaacson has written a riveting story of the roller-coaster life and searingly intense personality of a creative entrepreneur whose passion for perfection and ferocious drive revolutionized six industries: personal computers, animated movies, music, phones, tablet computing, and digital publishing.",
+                    "Basado en más de cuarenta entrevistas con Jobs realizadas durante dos años, así como entrevistas con más de cien familiares, amigos, adversarios, competidores y colegas, Walter Isaacson ha escrito una historia fascinante sobre la vida de la montaña rusa y su intensa intensidad. personalidad de un empresario creativo cuya pasión por la perfección y el impulso feroz revolucionaron seis industrias: computadoras personales, películas animadas, música, teléfonos, computación para tabletas y publicación digital."))
+            bookDao.insert(Book(1616552123,"The Last of Us","El ultimo de nosotros","the_last_of_us.jpg",
+                    1,2,2,2,false,"Naughty Dog creative director Neil Druckmann and rising comics star Faith Erin Hicks team up for the comics-exclusive first chapter of the wildly anticipated new game, The Last of Us! Nineteen years ago, a parasitic fungal outbreak killed the majority of the world's population, forcing survivors into a handful of quarantine zones.",
+                    "El director creativo de Naughty Dog, Neil Druckmann, y la estrella emergente de cómics, Faith Erin Hicks, se unen para el primer capítulo exclusivo de cómics del inesperado nuevo juego, ¡El último de nosotros! Hace diecinueve años, un brote de hongos parásitos mató a la mayoría de la población mundial, obligando a los sobrevivientes a un puñado de zonas de cuarentena."))
+*/
 
             //var book = Word("Hello")
            // wordDao.insert(word)
