@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
  * This is the backend. The database. This used to be done by the OpenHelper.
  * The fact that this has very few comments emphasizes its coolness.
  */
-@Database(entities = [Book::class,Author::class,Editorial::class,Tag::class], version = 1)
+@Database(entities = [Book::class,Author::class,Editorial::class,Tag::class,BookXAuthor::class,BookXEditorial::class,BookXTag::class], version = 1)
 abstract class BookRoomDatabase : RoomDatabase() {
 
     abstract fun bookDao(): BookDao
@@ -83,6 +83,8 @@ abstract class BookRoomDatabase : RoomDatabase() {
            // wordDao.insert(word)
             //word = Word("World!")
             //wordDao.insert(word)
+
+
         }
     }
 

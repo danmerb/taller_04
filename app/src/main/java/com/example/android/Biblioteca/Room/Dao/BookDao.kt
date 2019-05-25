@@ -21,16 +21,16 @@ interface BookDao {
     fun getAlphaBooksEng(): LiveData<List<Book>>
 
     //buscar por autor
-    @Query("SELECT * FROM Book INNER JOIN Author ON author.id_author== Book.id_author WHERE Author.Author_name== :AuthorSearch ")
-    fun getByAuthor(AuthorSearch: String): LiveData<List<Book>>
+    //@Query("SELECT * FROM Book INNER JOIN Author ON author.id_author== Book.id_author WHERE Author.Author_name== :AuthorSearch ")
+    //fun getByAuthor(AuthorSearch: String): LiveData<List<Book>>
 
     //buscar por tag Spanish
-    @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tag WHERE Tag.tag_nameSpan== :TagSearch ")
-    fun getByTagSpan(TagSearch: String): LiveData<List<Book>>
+   // @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tag WHERE Tag.tag_nameSpan== :TagSearch ")
+   // fun getByTagSpan(TagSearch: String): LiveData<List<Book>>
 
     //buscar por tag English
-    @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tag WHERE Tag.tag_nameEng== :TagSearch ")
-    fun getByTagEng(TagSearch: String): LiveData<List<Book>>
+   // @Query("SELECT * FROM Book INNER JOIN Tag ON Tag.id_tag== Book.id_tag WHERE Tag.tag_nameEng== :TagSearch ")
+   // fun getByTagEng(TagSearch: String): LiveData<List<Book>>
 
     //buscar por titulo en espanol
     @Query("SELECT * FROM Book  WHERE Book.book_titleSpanish= :TitleSearch ")
@@ -41,8 +41,8 @@ interface BookDao {
     fun getByTitleEng(TitleSearch: String): LiveData<List<Book>>
 
     //buscar por Editorial
-    @Query("SELECT * FROM Book INNER JOIN Editorial ON editorial.id_editorial== Book.id_editorial WHERE Editorial.Editorial_name== :EditorialSearch ")
-    fun getByEditorial(EditorialSearch: String): LiveData<List<Book>>
+    //@Query("SELECT * FROM Book INNER JOIN Editorial ON editorial.id_editorial== Book.id_editorial WHERE Editorial.Editorial_name== :EditorialSearch ")
+    //fun getByEditorial(EditorialSearch: String): LiveData<List<Book>>
 
     //mostrar los favoritos
     @Query("SELECT * FROM Book  WHERE Book.book_estado= :Estado")
