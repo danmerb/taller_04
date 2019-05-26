@@ -1,7 +1,8 @@
-package com.example.android.Biblioteca
+package com.example.android.Biblioteca.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.android.Biblioteca.R
 import com.example.android.Biblioteca.fragments.detalles
 
 class SecondActivity : AppCompatActivity() {

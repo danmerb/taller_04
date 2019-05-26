@@ -1,7 +1,6 @@
-package com.example.android.Biblioteca
+package com.example.android.Biblioteca.UI
 
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +9,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.Biblioteca.Adapter.BookAdapter
+import com.example.android.Biblioteca.R
 import com.example.android.Biblioteca.Room.Entity.Book
 import com.example.android.Biblioteca.ViewModel.BookViewModel
-import kotlinx.android.synthetic.main.content_main.*
-import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
