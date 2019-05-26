@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.android.Biblioteca.Room.Entity.Author
 import com.example.android.Biblioteca.Room.Entity.Book
-import com.example.android.Biblioteca.Room.Entity.Word
+
 
 
 @Dao
