@@ -36,10 +36,7 @@ class BookAdapter internal constructor(context: Context) :  RecyclerView.Adapter
         notifyDataSetChanged()
     }
 
-    internal fun setBooks(books: List<Book>) {
-        this.books = books
-        notifyDataSetChanged()
-    }
+
 
     override fun getItemCount() = books.size
 
