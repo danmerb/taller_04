@@ -4,49 +4,44 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.Biblioteca.R
 import com.example.android.Biblioteca.Room.Entity.Book
+import kotlinx.android.synthetic.main.list_element_book.view.*
 
 //import com.example.android.Biblioteca.models.Book
-import kotlinx.android.synthetic.main.list_element_book.view.*
-import java.util.zip.Inflater
 
 class BookAdapter internal constructor(context: Context) :  RecyclerView.Adapter<BookAdapter.BookViewHolder>
 () {
 
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var books = emptyList<Book>() // Cached copy of words
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookAdapter.BookViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_element_book, parent, false)
+    inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val bookItemView: TextView = itemView.findViewById(R.id.textView)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
+        val itemView = inflater.inflate(R.layout.recyclerview_item, parent, false)
         return BookViewHolder(itemView)
     }
 
-    override fun getItemCount()=books.size
-
-    override fun onBindViewHolder(holder: BookAdapter.BookViewHolder, position: Int) {
-        holder.bind(books[position])
+    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+        val current = books[position]
+        holder.bookItemView.text = current.titleEnglish
     }
     internal fun setBooks(words: List<Book>) {
         this.books = words
         notifyDataSetChanged()
     }
 
-    class BookViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
-        fun bind(book: Book){
-            with(itemView){
-               // titulo.text = book.titulo
-                /*tvEdicion =  findViewById(R.id.edicion)
-                tvEdicion.text = libro.edicion.toString()
-                tvEditorial =  findViewById(R.id.editorial)
-                tvEditorial.text = libro.editorial
-                tvISBN =  findViewById(R.id.isbn)
-                tvISBN.text = libro.isbn.toString()*/
-                //resumen.text = book.resumen
-            }
-        }
+    internal fun setBooks(books: List<Book>) {
+        this.books = books
+        notifyDataSetChanged()
     }
 
+    override fun getItemCount() = books.size
 
 
 
